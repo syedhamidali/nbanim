@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=40.6.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nbanim"
+version = "0.1.0"
+authors = [{name = "Hamid Ali Syed", email = "windcirculation@gmail.com"}]
+description = "A utility for displaying image sequences as animations in Jupyter Notebooks."
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.6"
+dependencies = [
+    "ipywidgets>=7.5",
+    "IPython>=7.16"
+]

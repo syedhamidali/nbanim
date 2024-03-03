@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: nbanim
+Version: 0.1.0
+Summary: A utility for displaying image sequences as animations in Jupyter Notebooks.
+Author-email: Hamid Ali Syed <windcirculation@gmail.com>
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: ipywidgets>=7.5
+Requires-Dist: IPython>=7.16
