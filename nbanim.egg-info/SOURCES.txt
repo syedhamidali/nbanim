@@ -5,5 +5,6 @@ nbanim/core.py
 nbanim.egg-info/PKG-INFO
 nbanim.egg-info/SOURCES.txt
 nbanim.egg-info/dependency_links.txt
+nbanim.egg-info/entry_points.txt
 nbanim.egg-info/requires.txt
 nbanim.egg-info/top_level.txt
