@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nbanim"
-version = "0.1.0"
+version = "0.1.1"
 authors = [{name = "Hamid Ali Syed", email = "windcirculation@gmail.com"}]
 description = "A utility for displaying image sequences as animations in Jupyter Notebooks."
 readme = "README.md"
