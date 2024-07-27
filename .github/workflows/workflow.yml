@@ -9,7 +9,6 @@ on:
 permissions:
   id-token: write
   contents: read
-  actions: write
 
 jobs:
   build:
@@ -29,30 +28,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install build twine
 
-      - name: Determine version and update pyproject.toml
-        id: version
+      - name: Replace version placeholder
         run: |
-          VERSION=$(date +%Y.%m.%d.%H%M%S)
-          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+          VERSION=$(date +%Y%m%d%H%M%S)
           sed -i "s/^version = .*/version = \"${VERSION}\"/" pyproject.toml
-
-      - name: Commit and push updated pyproject.toml
-        env:
-          GH_PAT: ${{ secrets.GH_PAT }}
-        run: |
-          git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Actions"
-          git add pyproject.toml
-          git commit -m "Update version to ${VERSION}"
-          git push https://x-access-token:${GH_PAT}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
-
-      - name: Create a new tag
-        env:
-          GH_PAT: ${{ secrets.GH_PAT }}
-        run: |
-          VERSION=${{ env.VERSION }}
-          git tag -a "v${VERSION}" -m "Version ${VERSION}"
-          git push https://x-access-token:${GH_PAT}@github.com/${{ github.repository }}.git "v${VERSION}"
 
       - name: Build package
         run: python -m build
