@@ -44,7 +44,7 @@ jobs:
           git config --global user.name "GitHub Actions"
           git add pyproject.toml
           git commit -m "Update version to ${VERSION}"
-          git push https://x-access-token:${GH_PAT}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
+          git push https://x-access-token:${GH_PAT}@github.com/syedhamidali/nbanim.git HEAD:${{ github.ref }}
 
       - name: Create a new tag
         env:
@@ -52,7 +52,7 @@ jobs:
         run: |
           VERSION=${{ env.VERSION }}
           git tag -a "v${VERSION}" -m "Version ${VERSION}"
-          git push https://x-access-token:${GH_PAT}@github.com/${{ github.repository }}.git "v${VERSION}"
+          git push https://x-access-token:${GH_PAT}@github.com/syedhamidali/nbanim.git "v${VERSION}"
 
       - name: Build package
         run: python -m build
