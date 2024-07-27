@@ -1,10 +1,9 @@
 name: Publish Python Package
 
 on:
-  push:
-    branches:
-      - main
-      - 'release/*'
+  release:
+    types:
+      - published
 
 permissions:
   id-token: write
@@ -17,6 +16,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v3
@@ -28,9 +29,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install build twine
 
-      - name: Replace version placeholder
+      - name: Set version from release tag
         run: |
-          VERSION=$(date +%Y%m%d%H%M%S)
+          VERSION=${GITHUB_REF#refs/tags/}
           sed -i "s/^version = .*/version = \"${VERSION}\"/" pyproject.toml
 
       - name: Build package
